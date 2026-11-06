@@ -5,7 +5,17 @@ using ZombieParty.Utility;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<IImageFileManager, ImageFileManager>();
 // Add services to the container.
-builder.Services.AddScoped<IZombiePartyDbContextSeed, ZombiePartyDbContextSeedDev>();
+
+switch (builder.Environment.EnvironmentName)
+{
+    case "Development":
+        builder.Services.AddScoped<IZombiePartyDbContextSeed, ZombiePartyDbContextSeedDev>(); break;
+    case "StagingPerf":
+        builder.Services.AddScoped<IZombiePartyDbContextSeed, ZombiePartyDbContextSeedStagingPerf>(); break;
+    default:
+        builder.Services.AddScoped<IZombiePartyDbContextSeed, ZombiePartyDbContextSeedProd>(); break;
+}
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ZombiePartyDbContext>(options => 
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")).UseLazyLoadingProxies()

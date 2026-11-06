@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
+using Microsoft.Extensions.Logging;
+
 namespace ZombieParty.Models.Data
 {
     public class ZombiePartyDbContextSeed : IZombiePartyDbContextSeed
