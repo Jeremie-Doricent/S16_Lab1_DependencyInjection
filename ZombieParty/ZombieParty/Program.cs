@@ -5,7 +5,7 @@ using ZombieParty.Utility;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<IImageFileManager, ImageFileManager>();
 // Add services to the container.
-builder.Services.AddScoped<IZombiePartyDbContextSeed, ZombiePartyDbContextSeedDev1>();
+builder.Services.AddScoped<IZombiePartyDbContextSeed, ZombiePartyDbContextSeedDev>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ZombiePartyDbContext>(options => 
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")).UseLazyLoadingProxies()

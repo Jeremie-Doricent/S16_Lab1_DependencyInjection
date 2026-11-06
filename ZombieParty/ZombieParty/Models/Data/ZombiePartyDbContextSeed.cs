@@ -2,7 +2,7 @@
 
 namespace ZombieParty.Models.Data
 {
-    public class ZombiePartyDbContextSeed : IZombiePartyDbContextSeed1
+    public class ZombiePartyDbContextSeed : IZombiePartyDbContextSeed
     {
         private ILogger<ZombiePartyDbContextSeed> logger;
         protected ZombiePartyDbContext context;
